@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts (assumes loaded via index.html or external) */
+
+/* Global backgrounds and glass (light default) */
+:root {
+  --bg: #f8fafc; /* light background */
+  --text: #0f172a; /* slate-900 */
+  --muted: #475569; /* slate-600 */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(15, 23, 42, 0.06);
+}
+
+.dark :root,
+.dark {
+  --bg: #0F0F1F;
+  --text: #ffffff;
+  --muted: #cfcfcf;
+  --glass-bg: rgba(24, 26, 36, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  @apply font-inter;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}
+
+.neon-cta {
+  @apply bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-neon-teal to-neon-lime text-black font-semibold shadow-neon-teal hover:shadow-neon-lime transition;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #00FFD6, #A8FF00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scrollbars */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: var(--bg); }
+*::-webkit-scrollbar-thumb { background: rgba(46, 47, 54, 0.4); border-radius: 6px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(46, 47, 54, 0.6); }
