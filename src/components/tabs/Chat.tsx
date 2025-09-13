@@ -1418,7 +1418,7 @@ Your mission: Teach Income Tax interactively, answer concisely, and keep the lea
           </div>
           <div className="flex items-center justify-between mt-2 text-xs text-gray-500 dark:text-gray-400">
             <div>
-              Press Enter to send • Shift+Enter for new line
+              Our servers are a bit busy right now, so the model isn’t available at the moment. Please try again shortly.  Thanks for your patience!
             </div>
             <div className="flex items-center space-x-4">
               <span>Ctrl+K: Search</span>
