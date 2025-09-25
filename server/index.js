@@ -15,11 +15,12 @@ const DEFAULT_SYSTEM_PROMPT = `You are **BizTutor**, an AI-powered interactive t
 if (!groqApiKey) {
   console.warn('Warning: GROQ_API_KEY is not set. Create a .env with GROQ_API_KEY=...');
 }
-const groq = new Groq({ apiKey: groqApiKey });
+// Only create Groq instance if API key is available
+const groq = groqApiKey ? new Groq({ apiKey: groqApiKey }) : null;
 
 app.get('/api/health', async (req, res) => {
   try {
-    if (!groqApiKey) {
+    if (!groqApiKey || !groq) {
       return res.status(500).json({ ok: false, error: 'GROQ_API_KEY missing' });
     }
     const models = await groq.models.list();
@@ -37,7 +38,7 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'messages must be an array' });
     }
 
-    if (!groqApiKey) {
+    if (!groqApiKey || !groq) {
       return res.status(500).json({ error: 'GROQ_API_KEY is missing on server' });
     }
 
@@ -62,7 +63,7 @@ app.post('/api/chat', async (req, res) => {
 // Simple test endpoint that mirrors the sample you provided
 app.get('/api/test', async (req, res) => {
   try {
-    if (!groqApiKey) {
+    if (!groqApiKey || !groq) {
       return res.status(500).json({ error: 'GROQ_API_KEY is missing on server' });
     }
     const completion = await groq.chat.completions.create({
@@ -149,7 +150,7 @@ app.post('/api/chat/stream', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 8787;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });

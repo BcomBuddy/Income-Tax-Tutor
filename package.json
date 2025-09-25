@@ -8,6 +8,7 @@
     "server": "node server/index.js",
     "dev:all": "concurrently \"npm run server\" \"vite\"",
     "build": "vite build",
+    "build:frontend": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
