@@ -4,7 +4,6 @@ import Learn from '../tabs/Learn';
 import Practice from '../tabs/Practice';
 import CaseLab from '../tabs/CaseLab';
 import Chat from '../tabs/Chat';
-import Flashcards from '../tabs/Flashcards';
 
 interface TabContentProps {
   currentTab: string;
@@ -23,8 +22,6 @@ const TabContent: React.FC<TabContentProps> = ({ currentTab }) => {
         return <CaseLab />;
       case 'Chat':
         return <Chat />;
-      case 'Flashcards':
-        return <Flashcards />;
       default:
         return <Dashboard />;
     }

@@ -5,7 +5,6 @@ import {
   PenTool,
   Briefcase,
   MessageCircle,
-  Brain,
 } from 'lucide-react';
 import { useTaxTutor } from '../../contexts/BizTutorContext';
 
@@ -15,7 +14,6 @@ const navItems = [
   { id: 'Learn', label: 'Learn', icon: BookOpen, accent: 'from-pastel-orange to-pastel-yellow' },
   { id: 'Practice', label: 'Practice', icon: PenTool, accent: 'from-pastel-pink to-pastel-orange' },
   { id: 'CaseLab', label: 'CaseLab', icon: Briefcase, accent: 'from-pastel-purple to-pastel-blue' },
-  { id: 'Flashcards', label: 'Flashcards', icon: Brain, accent: 'from-pastel-green to-pastel-yellow' },
 ];
 
 const Sidebar: React.FC = () => {

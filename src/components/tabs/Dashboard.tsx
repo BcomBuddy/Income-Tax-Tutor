@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
   BookOpen, 
-  Brain, 
   Target, 
   Zap,
   Play,
@@ -24,7 +23,6 @@ const Dashboard: React.FC = () => {
   const totalCorrect = attemptLogs?.reduce((acc, log) => acc + (log.score || 0), 0) || 0;
   const totalQuestions = attemptLogs?.reduce((acc, log) => acc + (log.total || 0), 0) || 0;
   const accuracy = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
-  const flashcardsDue = flashcards?.filter(card => new Date(card.due) <= new Date()).length || 0;
   
   // Calculate study streak safely
   const calculateStreak = () => {
@@ -79,14 +77,6 @@ const Dashboard: React.FC = () => {
       bg: 'bg-blue-50 dark:bg-blue-900/20',
       subtitle: 'Ready to learn'
     },
-    { 
-      title: 'Flashcards Due', 
-      value: flashcardsDue, 
-      icon: Brain,
-      color: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-50 dark:bg-orange-900/20',
-      subtitle: flashcardsDue > 0 ? 'Review needed' : 'All caught up!'
-    }
   ];
 
   const recentActivity = attemptLogs && attemptLogs.length > 0
@@ -136,13 +126,6 @@ const Dashboard: React.FC = () => {
               >
                 <Play className="w-4 h-4 mr-2" />
                 Practice Quiz
-              </button>
-              <button
-                onClick={() => setCurrentTab('Flashcards')}
-                className="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg transition-colors flex items-center"
-              >
-                <Brain className="w-4 h-4 mr-2" />
-                Review Cards
               </button>
             </div>
             <button
